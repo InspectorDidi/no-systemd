@@ -1,0 +1,26 @@
+--- orig/udisks2-2.1.8/debian/control	2016-11-25 05:16:50.000000000 -0500
++++ nosystemd/udisks2-2.1.8/debian/control	2017-11-15 18:17:28.128010948 -0500
+@@ -30,7 +30,6 @@
+ Architecture: linux-any
+ Multi-Arch: foreign
+ Depends: dbus,
+-         libpam-systemd,
+          parted,
+          udev,
+          ${misc:Depends},
+
+--- orig/udisks2-2.1.8/configure.ac	2016-03-01 04:26:50.000000000 -0500
++++ nosystemd/udisks2-2.1.8/configure.ac	2017-11-15 18:05:48.624045055 -0500
+@@ -154,10 +154,9 @@
+ AC_SUBST(LIBATASMART_CFLAGS)
+ AC_SUBST(LIBATASMART_LIBS)
+ 
+-PKG_CHECK_MODULES(LIBSYSTEMD_LOGIN, [libsystemd >= 209], [have_libsystemd_login=yes],
+-                  [PKG_CHECK_MODULES(LIBSYSTEMD_LOGIN, [libsystemd-login >= 44 libsystemd-daemon],
++PKG_CHECK_MODULES(LIBSYSTEMD_LOGIN, [libsystemd-login >= 44 libsystemd-daemon],
+                   [have_libsystemd_login=yes],
+-                  [have_libsystemd_login=no])])
++                  [have_libsystemd_login=no])
+ AM_CONDITIONAL(HAVE_LIBSYSTEMD_LOGIN, test x$have_libsystemd_login = xyes)
+ if test "x$have_libsystemd_login" = "xyes"; then
+   AC_DEFINE([HAVE_LIBSYSTEMD_LOGIN], 1, [Define to 1 if libsystemd-login is available])
