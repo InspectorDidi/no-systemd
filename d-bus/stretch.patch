@@ -1,0 +1,31 @@
+--- orig/dbus-1.10.22/debian/rules	2017-07-30 06:23:02.000000000 -0400
++++ nosystemd/dbus-1.10.22/debian/rules	2017-11-20 15:51:17.551375215 -0500
+@@ -47,14 +47,6 @@
+ 		--enable-apparmor \
+ 		--enable-libaudit \
+ 		--enable-selinux \
+-		--enable-systemd \
+-		--with-systemdsystemunitdir=/lib/systemd/system \
+-		SYSTEMCTL=/bin/systemctl \
+-		$(NULL)
+-normal_configure_flags += \
+-	--enable-user-session \
+-	--with-systemduserunitdir='$${prefix}/lib/systemd/user' \
+-	$(NULL)
+ endif
+ endif
+ 
+--- orig/dbus-1.10.22/debian/control	2017-07-30 06:23:02.000000000 -0400
++++ nosystemd/dbus-1.10.22/debian/control	2017-11-20 15:52:32.815371546 -0500
+@@ -157,11 +157,7 @@
+  ${misc:Pre-Depends},
+ Depends:
+  dbus (>= ${source:Version}),
+- libpam-systemd,
+- systemd,
+  ${misc:Depends},
+-Recommends:
+- systemd-sysv,
+ Breaks:
+  dbus-x11 (<< 1.9.10-2~),
+  policykit-1 (<< 0.105-12~),
