@@ -22,11 +22,13 @@ You can either clone this repository: `$ git clone https://github.com/bidaian/no
 
 or you can get just the patch you're interested in from https://github.com/bidaian/no-systemd
 
+In any case, be sure to use the right branch for your Debian distribution (stretch, buster, …).
+
 ```
 $ sudo apt-get build-dep udisks2
 $ apt-get source udisks2
 $ cd udisks2-2.1.8
-$ patch -p2 < ../no-systemd/udisk2/stretch.patch
+$ patch -p2 < ../no-systemd/udisk2/patch.txt
 $ dpkg-buildpackage -us -uc -nc
 ```
 ### Installing the package
