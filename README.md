@@ -39,3 +39,14 @@ $ cd ..
 $ sudo dpkg -i udisks2_2.1.8-1_amd64.deb
 $ sudo apt-get install -f
 ```
+
+### Building all packages
+Download [build_all.sh](https://raw.githubusercontent.com/bidaian/no-systemd/master/build_all.sh) to an empty directory and run it. That will build all the packages for which there are no-systemd patches.
+
+```
+$ mkdir build
+$ cd build
+$ curl -O https://raw.githubusercontent.com/bidaian/no-systemd/master/build_all.sh
+$ bash build_all.sh
+```
+It will need sudo only to download the build-dep dependencies. You can also read the script and do that yourself.
